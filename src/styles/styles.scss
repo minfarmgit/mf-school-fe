@@ -1,0 +1,26 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+@import "variables";
+
+.content-width {
+  width: 100%;
+  margin: auto;
+  padding-left: 110px;
+  padding-right: 110px;
+  box-sizing: border-box;
+  @media screen and (max-width: 79.9625em) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--tui-text-01);
+  &:hover {
+    color: var(--tui-primary) !important;
+  }
+}
+
+.logo {
+  width: 12rem;
+}

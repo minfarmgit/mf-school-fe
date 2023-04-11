@@ -1,0 +1,15 @@
+.header {
+  position: sticky;
+  top: 0;
+  border-bottom: 2px solid #EDF0F5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+  &__slot {
+    .logo {
+      width: 12rem;
+    }
+
+  }
+}

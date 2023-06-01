@@ -11,7 +11,6 @@ interface WelcomeFeature {
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent {
-  public year = new Date().getFullYear();
   public features: WelcomeFeature[] = [
     {
       img: 'assets/welcome/tests.svg',

@@ -38,7 +38,7 @@
       <div class="main-hero-line"><p class="text-xl text-black-3 mt-6 mb-0 mx-0 max-w-[70rem] text-center font-medium">Платформа предоставляет доступ к широкому спектру материалов, которые помогут провизорам <br> РУП «Минская Фармация» наращивать свой опыт и повышать качество своей работы.</p></div>
     </section>
 
-    <section class="flex gap-x-16 justify-center mt-20">
+    <section class="flex grid grid-cols-5 max-w-[60rem] mx-auto mt-20">
       <div *ngFor="let feature of features" class="">
         <div class="flex justify-center">
           <img class="w-20" [src]="feature.img" [alt]="feature.name">
@@ -51,40 +51,4 @@
   </div>
 </main>
 
-<footer class="content-width">
-  <div class="footer">
-    <div class="mt-40 pb-5 grid grid-cols-4 gap-[10%]">
-      <div>
-        <a routerLink="/"><img class="logo" src="/assets/logo.svg" alt="школа провизора"></a>
-      </div>
-      <div>
-        <h3>Контакты</h3>
-        <ul>
-          <li><a href="#">8 (017) 260 36 31</a></li>
-          <li><a href="#">8 (017) 516 80 08</a></li>
-          <li><a href="#">minfarm@minfarm.by</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Навигация</h3>
-        <ul>
-          <li><a href="#">В начало</a></li>
-          <li><a href="#">Семинары</a></li>
-          <li><a href="#">Вход в систему</a></li>
-        </ul>
-      </div>
-      <div>
-        <a class="text-blue-1 flex items-center" href="http://minfarm.by/">
-          <h3 class="!my-0">Главный сайт</h3>
-          <tui-svg
-            class="ml-1"
-            src="tuiIconArrowRightLarge"
-          ></tui-svg>
-        </a>
-      </div>
-    </div>
-    <div class="border-t-2 border-black-4 py-4 px-0">
-      <span>Все права защищены. © {{ year }} РУП «Минская Фармация»</span>
-    </div>
-  </div>
-</footer>
+<app-footer></app-footer>

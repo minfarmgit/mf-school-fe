@@ -1,26 +1,25 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 @import "variables";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.content-width {
-  width: 100%;
-  margin: auto;
-  padding-left: 110px;
-  padding-right: 110px;
-  box-sizing: border-box;
-  @media screen and (max-width: 79.9625em) {
-    padding-left: 60px;
-    padding-right: 60px;
+@layer base {
+  html {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .content-width {
+    @apply w-screen m-auto px-[60px] lg:px-[110px] box-border
+  }
+
+  a {
+    @apply no-underline text-black-1 hover:text-blue-1
   }
 }
 
-a {
-  text-decoration: none;
-  color: var(--tui-text-01);
-  &:hover {
-    color: var(--tui-primary) !important;
+@layer components {
+  .logo {
+    @apply select-none w-[12rem]
   }
-}
-
-.logo {
-  width: 12rem;
 }

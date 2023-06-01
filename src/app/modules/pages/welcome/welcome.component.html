@@ -1,11 +1,11 @@
 <header class="content-width">
-  <div class="header">
-    <div class="header__slot">
+  <div class="sticky top-0 border-b-2 border-black-4 flex items-center justify-between h-[90px]">
+    <div>
       <a routerLink="/"><img class="logo" src="/assets/logo.svg" alt="школа провизора"></a>
     </div>
-    <div class="header__slot">
+    <div>
       <nav>
-        <ul>
+        <ul class="flex gap-x-5 header-nav-ul">
           <li><a href="#">Главная</a></li>
           <li><a href="#">Семинары</a></li>
           <li><a href="#">Помощь</a></li>
@@ -15,6 +15,7 @@
     </div>
     <div class="header__slot">
       <button
+
         tuiButton
         type="button"
         icon="tuiIconLogIn"
@@ -26,17 +27,37 @@
   </div>
 </header>
 
-<main>
+<main class="content-width">
+  <div>
+    <section class="select-none mt-24 main-hero">
+      <div class="main-hero-line"><h2><span class="text-blue-1">Образовательная</span> платформа</h2></div>
+      <div class="main-hero-line">
+        <h2>для провизоров</h2>
+        <img class="ml-4 mt-3 w-48" src="/assets/welcome/humans.png" alt="hero">
+      </div>
+      <div class="main-hero-line"><p class="text-xl text-black-3 mt-6 mb-0 mx-0 max-w-[70rem] text-center font-medium">Платформа предоставляет доступ к широкому спектру материалов, которые помогут провизорам <br> РУП «Минская Фармация» наращивать свой опыт и повышать качество своей работы.</p></div>
+    </section>
 
+    <section class="flex gap-x-16 justify-center mt-20">
+      <div *ngFor="let feature of features" class="">
+        <div class="flex justify-center">
+          <img class="w-20" [src]="feature.img" [alt]="feature.name">
+        </div>
+        <div class="flex justify-center">
+          <span class="text-black-1 text-2xl text-center mt-3 font-medium">{{feature.name}}</span>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer class="content-width">
   <div class="footer">
-    <div class="footer__nav">
-      <div class="footer__slot">
+    <div class="mt-40 pb-5 grid grid-cols-4 gap-[10%]">
+      <div>
         <a routerLink="/"><img class="logo" src="/assets/logo.svg" alt="школа провизора"></a>
       </div>
-      <div class="footer__slot">
+      <div>
         <h3>Контакты</h3>
         <ul>
           <li><a href="#">8 (017) 260 36 31</a></li>
@@ -44,7 +65,7 @@
           <li><a href="#">minfarm@minfarm.by</a></li>
         </ul>
       </div>
-      <div class="footer__slot">
+      <div>
         <h3>Навигация</h3>
         <ul>
           <li><a href="#">В начало</a></li>
@@ -52,17 +73,17 @@
           <li><a href="#">Вход в систему</a></li>
         </ul>
       </div>
-      <div class="footer__slot">
-        <a class="main-site" href="#">
-          <h3>Главный сайт</h3>
+      <div>
+        <a class="text-blue-1 flex items-center" href="http://minfarm.by/">
+          <h3 class="!my-0">Главный сайт</h3>
           <tui-svg
-            class="tui-space_left-2"
+            class="ml-1"
             src="tuiIconArrowRightLarge"
           ></tui-svg>
         </a>
       </div>
     </div>
-    <div class="footer__copyrights">
+    <div class="border-t-2 border-black-4 py-4 px-0">
       <span>Все права защищены. © {{ year }} РУП «Минская Фармация»</span>
     </div>
   </div>

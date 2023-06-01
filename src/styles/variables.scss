@@ -1,5 +1,5 @@
 :root {
-    --tui-primary: #2F6FFF;
-    --tui-primary-hover: #5487ff;
-    --tui-text-01: #15182C;
+    --tui-primary: theme('colors.blue.1');
+    --tui-primary-hover: theme('colors.blue.2');
+    --tui-text-01: theme('colors.black.1');
 }

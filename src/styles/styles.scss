@@ -13,6 +13,14 @@
     @apply w-screen m-auto px-[60px] lg:px-[110px] box-border
   }
 
+  .content-inner-width {
+    @apply max-w-[800px] box-border
+  }
+
+  .content-inner-grid {
+    @apply grid
+  }
+
   a {
     @apply no-underline text-black-1 hover:text-blue-1
   }
@@ -20,6 +28,6 @@
 
 @layer components {
   .logo {
-    @apply select-none w-[12rem]
+    @apply select-none w-[11rem]
   }
 }

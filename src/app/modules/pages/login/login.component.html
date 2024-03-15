@@ -1,8 +1,71 @@
-<main class="h-[100dvh] grid grid-cols-2">
+<main class="h-[100vh] grid grid-cols-2">
   <div>
-    <img class="w-full h-full object-cover" src="assets/login/login-image.png" alt="Школа провизора">
+    <img class="w-full h-[100vh] object-cover" src="assets/login/login-image.png" alt="Школа провизора">
   </div>
   <div class="bg-blue-1 flex items-center justify-center">
-    2
+    <div class="w-[60%]">
+      <tui-island
+        size="l"
+      >
+        <div class="tui-island__content flex flex-col">
+          <h3 class="tui-island__title text-center w-full">Авторизация</h3>
+          <form class="w-full flex flex-col items-center mt-2" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+            <div class="w-full">
+              <tui-select
+                *tuiLet="craList as items"
+                [tuiTextfieldLabelOutside]="true"
+                [valueContent]="items ? stringify(items) : loading"
+                formControlName="login"
+              >
+                Аптека
+                <ng-template tuiDataList>
+                  <tui-data-list *ngIf="items; else loading">
+                    <button
+                      *ngFor="let item of items"
+                      tuiOption
+                      [value]="item.login"
+                    >
+                      {{ item.name }}
+                    </button>
+                  </tui-data-list>
+                </ng-template>
+                <ng-template #loading>
+                  <tui-loader class="tui-space_vertical-3 loader"></tui-loader>
+                </ng-template>
+              </tui-select>
+              <tui-error
+                formControlName="login"
+                [error]="[] | tuiFieldError | async"
+              ></tui-error>
+            </div>
+            <div class="w-full mt-4">
+              <tui-input-password
+                [tuiTextfieldLabelOutside]="true"
+                formControlName="password"
+              >
+                Пароль
+                <input
+                  tuiTextfield
+                />
+              </tui-input-password>
+              <tui-error
+                formControlName="password"
+                [error]="[] | tuiFieldError | async"
+              ></tui-error>
+            </div>
+            <button
+              [disabled]="!formGroup.valid"
+              tuiButton
+              type="submit"
+              appearance="flat"
+              size="m"
+              class="tui-island__footer-button"
+            >
+              Войти
+            </button>
+          </form>
+        </div>
+      </tui-island>
+    </div>
   </div>
 </main>

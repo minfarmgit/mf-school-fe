@@ -1,16 +1,32 @@
-<header class="h-[90px] content-width flex items-center">
-  <div>
-    <a routerLink="/"><img class="logo" src="/assets/logo.svg" alt="школа провизора"></a>
+<header class="sticky top-0 h-[90px] content-width flex gap-10 items-center justify-between bg-white-1">
+  <div class="side-inner-width flex items-center">
+    <a routerLink="/app/home"><img class="logo" src="/assets/logo.svg" alt="школа провизора"></a>
   </div>
-  <div>
-
+  <div class="content-inner-width flex items-center">
+    <tui-input
+      tuiTextfieldSize="m"
+      tuiTextfieldIcon="tuiIconSearchLarge"
+      class="w-full"
+    >
+      Поиск
+      <input
+        tuiTextfield
+      />
+    </tui-input>
   </div>
-  <div>
+  <div class="side-inner-width flex items-center justify-end">
+    <ng-template #icon>
+      <tui-avatar
+        size="xs"
+        [avatarUrl]="'https://sun9-77.userapi.com/impg/Q4e53v8w1ZQUy96746MCNjgcFfi1Tk1PzLyPYg/zTYgznax01Q.jpg?size=637x796&quality=95&sign=6fca7475bfa5daa1de507570bd4069a3&type=album'"
+        [rounded]="true"
+      ></tui-avatar>
+    </ng-template>
     <button
       routerLink="/login"
       tuiButton
       type="button"
-      icon="tuiIconLogIn"
+      [icon]="icon"
       size="m"
     >
       Владимир

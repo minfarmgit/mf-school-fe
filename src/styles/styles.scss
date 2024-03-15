@@ -13,10 +13,6 @@
     @apply w-screen m-auto px-[60px] lg:px-[110px] box-border
   }
 
-  .content-inner-width {
-    @apply max-w-[800px] box-border
-  }
-
   .content-inner-grid {
     @apply grid
   }
@@ -29,5 +25,15 @@
 @layer components {
   .logo {
     @apply select-none w-[11rem]
+  }
+}
+
+@layer utilities {
+  .side-inner-width {
+    @apply w-[20rem] box-border
+  }
+
+  .content-inner-width {
+    @apply max-w-[50rem] box-border w-full
   }
 }

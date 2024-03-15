@@ -15,8 +15,8 @@ import { of } from "rxjs";
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         BrowserAnimationsModule,
+        AppRoutingModule,
         TuiRootModule,
         TuiDialogModule,
         TuiAlertModule

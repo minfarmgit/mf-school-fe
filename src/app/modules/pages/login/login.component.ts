@@ -1,44 +1,14 @@
-import { Component } from '@angular/core';
-import { AsyncPipe, CommonModule, NgOptimizedImage } from "@angular/common";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   TUI_PASSWORD_TEXTS,
   TUI_VALIDATION_ERRORS,
-  TuiFieldErrorPipeModule,
-  TuiInputPasswordModule,
-  TuiIslandModule,
-  TuiSelectModule
 } from "@taiga-ui/kit";
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import {
-  TuiButtonModule,
-  TuiDataListModule,
-  TuiErrorModule,
-  TuiLoaderModule,
-  TuiTextfieldControllerModule
-} from "@taiga-ui/core";
-import { TuiStringHandler, tuiPure, TuiContextWithImplicit, TuiLetModule } from "@taiga-ui/cdk";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { TuiStringHandler, tuiPure, TuiContextWithImplicit } from "@taiga-ui/cdk";
 import { of } from "rxjs";
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [
-    NgOptimizedImage,
-    TuiIslandModule,
-    ReactiveFormsModule,
-    TuiButtonModule,
-    TuiFieldErrorPipeModule,
-    AsyncPipe,
-    TuiErrorModule,
-    TuiFieldErrorPipeModule,
-    TuiTextfieldControllerModule,
-    TuiInputPasswordModule,
-    TuiLoaderModule,
-    TuiDataListModule,
-    TuiSelectModule,
-    TuiLetModule,
-    CommonModule,
-  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [
@@ -53,6 +23,7 @@ import { of } from "rxjs";
       useValue: of([``]),
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   public craList: { login: string, name: string }[] = [

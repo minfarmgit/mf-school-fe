@@ -34,7 +34,7 @@
     "@tinkoff/ng-dompurify": "3.0.0",
     "@tinkoff/tui-editor": "^1.0.1",
     "dompurify": "2.2.9",
-    "pocketbase": "^0.20.1",
+    "pocketbase": "^0.21.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.4"

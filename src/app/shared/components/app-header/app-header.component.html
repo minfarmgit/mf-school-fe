@@ -1,4 +1,4 @@
-<header class="app-wrapper-slot sticky top-0 h-[90px] items-center bg-white-1">
+<header *tuiLet="(currentUser | async)?.record as user" class="app-wrapper-slot sticky top-0 h-[90px] items-center bg-white-1">
   <div class="app-side-slot flex items-center">
     <a routerLink="/app/home"><img class="logo" src="/assets/logo.svg" alt="школа провизора"></a>
   </div>
@@ -28,13 +28,13 @@
           <div class="">
             <tui-avatar
               size="m"
-              [avatarUrl]="'https://sun9-77.userapi.com/impg/Q4e53v8w1ZQUy96746MCNjgcFfi1Tk1PzLyPYg/zTYgznax01Q.jpg?size=637x796&quality=95&sign=6fca7475bfa5daa1de507570bd4069a3&type=album'"
+              [avatarUrl]="user.avatarUrl"
               [rounded]="true"
             ></tui-avatar>
           </div>
           <div class="ml-4">
-            <div class="text-lg font-bold">Владимир Миронов</div>
-            <div class="text-gray-600">Провизор-инспектор</div>
+            <div class="text-lg font-bold">{{ user.name }}</div>
+            <div class="text-gray-600">{{ user.position }}</div>
           </div>
         </div>
         <div class="mt-4">

@@ -1,10 +1,11 @@
-<header class="sticky top-0 h-[90px] content-width flex gap-10 items-center justify-between bg-white-1">
-  <div class="side-inner-width flex items-center">
+<header class="app-wrapper-slot sticky top-0 h-[90px] items-center bg-white-1">
+  <div class="app-side-slot flex items-center">
     <a routerLink="/app/home"><img class="logo" src="/assets/logo.svg" alt="школа провизора"></a>
   </div>
-  <div class="content-inner-width flex items-center">
+  <div class="app-main-slot flex items-center">
     <tui-input
       tuiTextfieldSize="m"
+      [tuiTextfieldLabelOutside]="true"
       tuiTextfieldIcon="tuiIconSearchLarge"
       class="w-full"
     >
@@ -14,22 +15,56 @@
       />
     </tui-input>
   </div>
-  <div class="side-inner-width flex items-center justify-end">
-    <ng-template #icon>
-      <tui-avatar
-        size="xs"
-        [avatarUrl]="'https://sun9-77.userapi.com/impg/Q4e53v8w1ZQUy96746MCNjgcFfi1Tk1PzLyPYg/zTYgznax01Q.jpg?size=637x796&quality=95&sign=6fca7475bfa5daa1de507570bd4069a3&type=album'"
-        [rounded]="true"
-      ></tui-avatar>
-    </ng-template>
-    <button
-      routerLink="/login"
-      tuiButton
-      type="button"
-      [icon]="icon"
-      size="m"
+  <div class="app-side-slot flex items-center justify-end">
+    <ng-template
+      #dropdown
+      let-close="close"
     >
-      Владимир
-    </button>
+      <div class="px-2 py-4 w-[22rem]">
+        <div class="font-bold mb-4 px-2">
+          Мой профиль
+        </div>
+        <div class="flex px-2">
+          <div class="">
+            <tui-avatar
+              size="m"
+              [avatarUrl]="'https://sun9-77.userapi.com/impg/Q4e53v8w1ZQUy96746MCNjgcFfi1Tk1PzLyPYg/zTYgznax01Q.jpg?size=637x796&quality=95&sign=6fca7475bfa5daa1de507570bd4069a3&type=album'"
+              [rounded]="true"
+            ></tui-avatar>
+          </div>
+          <div class="ml-4">
+            <div class="text-lg font-bold">Владимир Миронов</div>
+            <div class="text-gray-600">Провизор-инспектор</div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <button
+            tuiButton
+            appearance="header-dropdown-btn"
+            class="w-full"
+            type="button"
+            icon="tuiIconLogOut"
+            size="m"
+          >
+            Выйти
+          </button>
+        </div>
+      </div>
+    </ng-template>
+    <tui-hosted-dropdown
+      tuiDropdownAlign="right"
+      [content]="dropdown"
+      [(open)]="open"
+    >
+      <div class="cursor-pointer flex items-center hover:opacity-90">
+        <tui-avatar
+          class="scale-95"
+          size="m"
+          [avatarUrl]="'https://sun9-77.userapi.com/impg/Q4e53v8w1ZQUy96746MCNjgcFfi1Tk1PzLyPYg/zTYgznax01Q.jpg?size=637x796&quality=95&sign=6fca7475bfa5daa1de507570bd4069a3&type=album'"
+          [rounded]="true"
+        ></tui-avatar>
+        <tui-svg class="dropdown-chevron ml-2" src="tuiIconChevronDownLarge"></tui-svg>
+      </div>
+    </tui-hosted-dropdown>
   </div>
 </header>

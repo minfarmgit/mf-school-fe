@@ -1,0 +1,13 @@
+[tuiWrapper][data-appearance='header-dropdown-btn'] {
+  @apply bg-transparent font-normal px-2;
+  padding: 0 .5rem !important;
+  .t-content {
+    @apply justify-start;
+  }
+  .t-icon {
+    @apply text-gray-600;
+  }
+  &:hover {
+    @apply bg-gray-100;
+  }
+}

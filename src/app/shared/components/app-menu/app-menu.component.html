@@ -1,0 +1,17 @@
+<div class="flex flex-col gap-2 -ml-[1.5rem]">
+  <button
+    *ngFor="let item of items"
+    [routerLink]="item.path"
+    [pseudoActive]="rla.isActive"
+    routerLinkActive
+    #rla="routerLinkActive"
+    tuiButton
+    appearance="app-menu-btn"
+    class="w-full"
+    type="button"
+    [icon]="item.icon"
+    size="m"
+  >
+    {{ item.name }}
+  </button>
+</div>

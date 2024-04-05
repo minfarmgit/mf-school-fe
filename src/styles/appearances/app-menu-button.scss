@@ -1,0 +1,18 @@
+[tuiWrapper][data-appearance='app-menu-btn'] {
+  &[data-state=active] {
+    @apply bg-blue-100 #{!important};;
+    .t-icon {
+      @apply text-blue-1 #{!important};;
+    }
+  }
+  @apply bg-transparent font-normal;
+  .t-content {
+    @apply justify-start;
+  }
+  .t-icon {
+    @apply text-gray-600;
+  }
+  &:hover {
+    @apply bg-blue-50;
+  }
+}

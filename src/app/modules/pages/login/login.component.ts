@@ -6,6 +6,8 @@ import {
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TuiStringHandler, tuiPure, TuiContextWithImplicit } from "@taiga-ui/cdk";
 import { of } from "rxjs";
+import { AuthService } from "../../../shared/services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,7 @@ import { of } from "rxjs";
 export class LoginComponent {
   public craList: { login: string, name: string }[] = [
     {
-      login: 'cra16',
+      login: 'zidiks228@gmail.com',
       name: 'ЦРА №16 Борисовского района',
     },
     {
@@ -47,6 +49,8 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private router: Router,
   ) { }
 
   public onSubmit(): void {
@@ -55,6 +59,21 @@ export class LoginComponent {
     if (this.formGroup.invalid) {
       return;
     }
+
+    const formValue = this.formGroup.value;
+
+    this.auth.login(formValue.login, formValue.password).subscribe(
+      res => {
+        if (res.token) {
+          this.router.navigate(['/app'])
+        }
+      },
+      error => {
+        if (error.status === 400) {
+          console.log('Не удалось авторизироваться');
+        }
+      }
+    );
   }
 
   @tuiPure

@@ -9,8 +9,10 @@ import {
 import { TuiAvatarModule, TuiInputModule } from "@taiga-ui/kit";
 import { AsyncPipe, NgForOf } from "@angular/common";
 import { DbService } from "../../services/db.service";
-import { from, map, Observable } from "rxjs";
 import { TuiLetModule } from "@taiga-ui/cdk";
+import { AuthService } from "../../services/auth.service";
+import { User } from "../../interfaces";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-app-header',
@@ -26,7 +28,8 @@ import { TuiLetModule } from "@taiga-ui/cdk";
     TuiDataListModule,
     NgForOf,
     AsyncPipe,
-    TuiLetModule
+    TuiLetModule,
+    ReactiveFormsModule
   ],
   templateUrl: './app-header.component.html',
   styleUrl: './app-header.component.scss'
@@ -34,27 +37,22 @@ import { TuiLetModule } from "@taiga-ui/cdk";
 export class AppHeaderComponent {
   @ViewChild(TuiHostedDropdownComponent) component?: TuiHostedDropdownComponent;
   public open = false;
-  public currentUser: Observable<any>;
+  public currentUser: User;
+  public searchControl = new FormControl();
+
   constructor(
     public db: DbService,
+    public auth: AuthService,
   ) {
-    this.currentUser = this.getCurrentUser();
-    this.currentUser.subscribe(res => console.log(res));
-  }
-
-  private getCurrentUser(): Observable<any> {
-    return from(this.db.pb.collection('users').authWithPassword('zidiks228@gmail.com', 'Karambatv123')).pipe(
-      map(res => {
-        if (res?.record) {
-          res.record['avatarUrl'] = this.db.pb.getFileUrl(res.record, res.record['avatar']);
-        }
-        return res;
-      })
-    );
+    this.currentUser = auth.getCurrentUser();
   }
 
   public onClick(): void {
     this.open = false;
     this.component?.nativeFocusableElement?.focus();
+  }
+
+  public logout(): void {
+    this.auth.logout();
   }
 }

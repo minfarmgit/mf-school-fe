@@ -1,4 +1,4 @@
-<header *tuiLet="(currentUser | async)?.record as user" class="app-wrapper-slot sticky top-0 h-[90px] items-center bg-white-1">
+<header *tuiLet="currentUser as user" class="app-wrapper-slot sticky top-0 h-[90px] items-center bg-white-1">
   <div class="app-side-slot flex items-center">
     <a routerLink="/app/home"><img class="logo" src="/assets/logo.svg" alt="школа провизора"></a>
   </div>
@@ -8,6 +8,7 @@
       [tuiTextfieldLabelOutside]="true"
       tuiTextfieldIcon="tuiIconSearchLarge"
       class="w-full"
+      [formControl]="searchControl"
     >
       Поиск
       <input
@@ -28,7 +29,7 @@
           <div class="">
             <tui-avatar
               size="m"
-              [avatarUrl]="user.avatarUrl"
+              [avatarUrl]="user.avatarUrl || null"
               [rounded]="true"
             ></tui-avatar>
           </div>
@@ -45,6 +46,7 @@
             type="button"
             icon="tuiIconLogOut"
             size="m"
+            (click)="logout()"
           >
             Выйти
           </button>

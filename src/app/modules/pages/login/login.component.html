@@ -10,7 +10,7 @@
         <div class="tui-island__content flex flex-col">
           <h3 class="tui-island__title text-center w-full">Авторизация</h3>
           <form class="w-full flex flex-col items-center mt-2" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-            <div class="w-full">
+            <div *ngIf="isOwner else defaultLogin" class="w-full">
               <tui-select
                 *tuiLet="craList as items"
                 [tuiTextfieldLabelOutside]="true"
@@ -38,6 +38,24 @@
                 [error]="[] | tuiFieldError | async"
               ></tui-error>
             </div>
+            <ng-template #defaultLogin>
+              <div class="w-full">
+                <tui-input
+                  [tuiTextfieldLabelOutside]="true"
+                  formControlName="login"
+                >
+                  Логин
+                  <input
+                    tuiTextfield
+                    type="text"
+                  />
+                </tui-input>
+                <tui-error
+                  formControlName="login"
+                  [error]="[] | tuiFieldError | async"
+                ></tui-error>
+              </div>
+            </ng-template>
             <div class="w-full mt-4">
               <tui-input-password
                 [tuiTextfieldLabelOutside]="true"

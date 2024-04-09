@@ -1,0 +1,40 @@
+<div class="bg-white-1 rounded-xl p-5 w-full">
+  <div class="flex items-center justify-between mb-3">
+    <div class="flex items-center">
+      <tui-svg src="tuiIconFileTextLarge" class="text-blue-1"></tui-svg>
+      <span class="ml-2 text-lg">Тест</span>
+    </div>
+    <div>
+      <tui-badge
+        size="l"
+        status="info"
+        value="Доступно"
+        class="tui-space_right-2 tui-space_bottom-2"
+      ></tui-badge>
+      <button
+        appearance="primary"
+        tuiButton
+        type="button"
+        shape="rounded"
+        size="s"
+        iconRight="tuiIconArrowRight"
+      >
+        Пройти
+      </button>
+    </div>
+  </div>
+  <div class="font-medium text-2xl">
+    {{ data.theme }}
+  </div>
+  <div class="flex items-center gap-x-4 mt-4">
+    <div class="text-gray-500">
+      <div class="text-lg">{{ data.from | date : 'd LLL y' }}</div>
+      <div class="text-base font-light">{{ data.from | date : 'HH:mm' }}</div>
+    </div>
+    <div class="w-6 h-[1px] bg-gray-500"></div>
+    <div class="text-gray-500">
+      <div class="text-lg">{{ data.to | date : 'd LLL y' }}</div>
+      <div class="text-base font-light">{{ data.to | date : 'HH:mm' }}</div>
+    </div>
+  </div>
+</div>

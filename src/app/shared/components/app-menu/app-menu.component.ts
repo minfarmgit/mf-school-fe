@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { TuiButtonModule } from "@taiga-ui/core";
 import { CommonModule } from "@angular/common";
 import { RouterLink, RouterLinkActive } from "@angular/router";
@@ -36,11 +36,6 @@ export class AppMenuComponent {
       icon: 'tuiIconHelpCircleLarge',
       name: 'Опросы',
       path: '/app/quiz',
-    },
-    {
-      icon: 'tuiIconInboxLarge',
-      name: 'База знаний',
-      path: '/app/knowledges',
     },
     {
       icon: 'tuiIconZapLarge',

@@ -28,6 +28,7 @@ import { Router } from "@angular/router";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
+  public isOwner: boolean = false;
   public craList: { login: string, name: string }[] = [
     {
       login: 'zidiks228@gmail.com',

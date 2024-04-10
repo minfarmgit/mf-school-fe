@@ -34,6 +34,7 @@
     "@tinkoff/ng-dompurify": "3.0.0",
     "@tinkoff/tui-editor": "^1.0.1",
     "dompurify": "2.2.9",
+    "ng2-pdf-viewer": "^10.0.0",
     "pocketbase": "^0.21.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.6.2",

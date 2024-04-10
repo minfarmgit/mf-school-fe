@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { TuiSvgModule } from "@taiga-ui/core";
+import { Component, OnInit, signal } from '@angular/core';
+import { TuiButtonModule, TuiSvgModule } from "@taiga-ui/core";
 import { Observable, shareReplay, switchMap } from "rxjs";
 import { TestDetails } from "../../../../shared/interfaces";
 import { TestsService } from "../tests.service";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { AsyncPipe } from "@angular/common";
 import { TuiLetModule } from "@taiga-ui/cdk";
+import { PdfViewerModule } from "ng2-pdf-viewer";
 
 @Component({
   selector: 'app-details',
@@ -14,13 +15,17 @@ import { TuiLetModule } from "@taiga-ui/cdk";
     TuiSvgModule,
     AsyncPipe,
     TuiLetModule,
-    RouterLink
+    RouterLink,
+    PdfViewerModule,
+    TuiButtonModule
   ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent {
   public test: Observable<TestDetails>;
+  public currentPage = 1;
+  public maxPage = 1;
 
   constructor(
     private testsService: TestsService,
@@ -34,9 +39,22 @@ export class DetailsComponent implements OnInit {
     );
   }
 
-  public ngOnInit() {
-    this.test.subscribe(res => {
-      console.log(res);
-    })
+  public setCurrPage(direction: -1 | 1): void {
+    switch (direction) {
+      case 1:
+        if (this.currentPage < this.maxPage) {
+          this.currentPage+= 1;
+        }
+        return;
+      case -1:
+        if (this.currentPage > 1) {
+          this.currentPage-= 1;
+        }
+        return;
+    }
+  }
+
+  pageInitialized(e: any) {
+    this.maxPage = e.source.pdfDocument._pdfInfo.numPages;
   }
 }

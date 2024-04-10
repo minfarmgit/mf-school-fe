@@ -1,11 +1,53 @@
-<div *tuiLet="(test | async) as data" class="content-width">
-  <div class="flex items-center">
-    <div routerLink="/app/tests" class="flex items-center cursor-pointer">
-      <tui-svg src="tuiIconArrowLeft" class="mt-[1px] font-light"></tui-svg>
-      <span class="text-lg">Назад</span>
+<div *tuiLet="(test | async) as data" class="content-width flex flex-col h-[calc(100vh_-_110px)]">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center">
+      <button
+        routerLink="/app/tests"
+        tuiIconButton
+        type="button"
+        appearance="secondary-destructive"
+        size="m"
+        icon="tuiIconChevronLeftLarge"
+      ></button>
+      <div class="text-2xl ml-6 mt-[.1rem]">
+        {{ data?.theme || 'Неизвестно' }}
+      </div>
     </div>
-    <div class="text-xl ml-6 mt-[.1rem]">
-      {{ data?.theme || 'Неизвестно' }}
+    <div>
+      <button
+        tuiIconButton
+        type="button"
+        class="tui-space_right-3"
+        size="m"
+        icon="tuiIconArrowLeftLarge"
+        (click)="setCurrPage(-1)"
+      ></button>
+      <button
+        tuiIconButton
+        type="button"
+        size="m"
+        icon="tuiIconArrowRightLarge"
+        (click)="setCurrPage(1)"
+      ></button>
+    </div>
+  </div>
+  <div class="flex-1 relative my-4">
+    <div class="grid grid-cols-12 h-full">
+      <div class="col-span-4">
+
+      </div>
+      <div class="rounded-xl overflow-hidden col-span-8 bg-black-1">
+              <pdf-viewer [src]="data?.presentationUrl"
+                          [render-text]="true"
+                          [page]="currentPage"
+                          [show-all]="false"
+                          [original-size]="false"
+                          [autoresize]="true"
+                          zoom-scale="page-fit"
+                          class="w-full h-full"
+                          (pages-initialized)="pageInitialized($event)"
+              ></pdf-viewer>
+      </div>
     </div>
   </div>
 </div>

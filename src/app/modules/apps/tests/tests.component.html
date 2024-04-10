@@ -2,8 +2,16 @@
   <div class="app-side-slot flex">
     <app-app-menu />
   </div>
-  <div class="app-main-slot flex">
-    Content
+  <div class="app-main-slot flex flex-col gap-5">
+    @for (test of (tests | async); track test.id) {
+      <app-preview-test
+        [data]="test"
+      />
+    } @empty {
+      <div>
+        Здесь будет что-то интересное...
+      </div>
+    }
   </div>
   <div class="app-side-slot flex justify-end"></div>
 </div>

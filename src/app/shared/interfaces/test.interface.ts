@@ -7,3 +7,8 @@ export interface Test extends DbRecord {
   questions: any;
   theme: string;
 }
+
+export interface TestDetails extends Test {
+  presentationUrl: string;
+}
+
